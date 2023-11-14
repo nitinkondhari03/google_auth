@@ -1,18 +1,19 @@
 const mongoose=require("mongoose")
+require("dotenv").config()
 
 
-const connection=mongoose.connect("mongodb://127.0.0.1:27017/login").catch((error)=>{
+const connection=mongoose.connect(process.env.MONGO_URL).catch((error)=>{
       console.log("monggose connection error")
 })
-mongoose.connection.on('connected', function () {  
-      console.log('Mongoose default connection open to ');
-    }); 
+// mongoose.connection.on('connected', function () {  
+//       console.log('Mongoose default connection open to ');
+//     }); 
     
-    // If the connection throws an error
-    mongoose.connection.on('error',function (err) {  
-      console.log('Mongoose default connection error: ');
-      process.exit(); 
-    }); 
+//     // If the connection throws an error
+//     mongoose.connection.on('error',function (err) {  
+//       console.log('Mongoose default connection error: ');
+      
+//     }); 
   
 
 module.exports={connection}
